@@ -13,5 +13,10 @@ namespace PersonnelMVC.Controllers
         {
             return Content("Home Page of Personnel");
         }
+
+        public ActionResult PersonnelList(string sort, int page)
+        {
+            return Content(sort + "-" + page);
+        }
     }
 }
