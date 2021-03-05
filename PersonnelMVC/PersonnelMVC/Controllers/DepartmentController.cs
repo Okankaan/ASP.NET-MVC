@@ -17,7 +17,21 @@ namespace PersonnelMVC.Controllers
 
         public ActionResult Test()
         {
-            return View();
+            var department = new Department() { Id = 1, Name = "Computing" };
+            return RedirectToAction("Index", "Personnel", new { SortBy="salary"});
         }
+
+        //-Action Results-
+        //Type                      -  Helper Method
+        //ViewResult                -> View()            ->Return to Html
+        //PartialViewResult         -> PartialView()     ->Return to Html but not having head and body tags, like table html
+        //ContentResult             -> Content()         ->Return string
+        //RedirectResult            -> Redirect()
+        //RedirectToRouteResult     -> RedirectToAction()
+        //JsonResult                -> Json()            ->Return Json result
+        //File Result               -> File()            ->Return File result
+        //HttpNotFoundResult        -> HttpNotFound()    ->Return Not Found result
+        //HttpUnauthorizedResult    -> --------          ->Return Unauthorized result
+        //EmptyResult               -> --------          ->if you don't want return any result.
     }
 }
