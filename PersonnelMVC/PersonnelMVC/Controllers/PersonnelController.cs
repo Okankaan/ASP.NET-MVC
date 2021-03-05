@@ -14,6 +14,7 @@ namespace PersonnelMVC.Controllers
             return Content("Home Page of Personnel");
         }
 
+        [Route("personnel/list/{sort}/{page}")] //http://localhost:50176/personnel/list/salary/5
         public ActionResult PersonnelList(string sort, int page)
         {
             return Content(sort + "-" + page);

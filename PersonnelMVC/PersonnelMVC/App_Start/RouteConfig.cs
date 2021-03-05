@@ -13,17 +13,19 @@ namespace PersonnelMVC
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(
-               name: "HomePage",
-               url: "",
-               defaults: new { controller = "Department", action = "Hello" }//http://localhost:50176/
-           );
+            routes.MapMvcAttributeRoutes();
 
-            routes.MapRoute(
-               name: "PersonnelList",
-               url: "personnel/list/{sort}/{page}",
-               defaults: new { controller = "Personnel", action = "PersonnelList" }//http://localhost:50176/personnel/list/salary/5
-           );
+           // routes.MapRoute(
+           //    name: "HomePage",
+           //    url: "",
+           //    defaults: new { controller = "Department", action = "Hello" }//http://localhost:50176/
+           //);
+
+           // routes.MapRoute(
+           //    name: "PersonnelList",
+           //    url: "personnel/list/{sort}/{page}",
+           //    defaults: new { controller = "Personnel", action = "PersonnelList" }//http://localhost:50176/personnel/list/salary/5
+           //);
 
             routes.MapRoute(
                 name: "Default",
