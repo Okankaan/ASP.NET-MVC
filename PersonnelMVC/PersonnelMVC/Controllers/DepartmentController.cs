@@ -20,18 +20,20 @@ namespace PersonnelMVC.Controllers
             var department = new Department() { Id = 1, Name = "Computing" };
             return RedirectToAction("Index", "Personnel", new { SortBy="salary"});
         }
+        
+        public ActionResult Delete(int id) // name of parameter is "id", because third parameter of url in RouteConfig.cs is "id"
+        {                                            
+            return Content("Coming Id: " + id);     //http://localhost:50176/department/delete/5
+        }
 
-        //-Action Results-
-        //Type                      -  Helper Method
-        //ViewResult                -> View()            ->Return to Html
-        //PartialViewResult         -> PartialView()     ->Return to Html but not having head and body tags, like table html
-        //ContentResult             -> Content()         ->Return string
-        //RedirectResult            -> Redirect()
-        //RedirectToRouteResult     -> RedirectToAction()
-        //JsonResult                -> Json()            ->Return Json result
-        //File Result               -> File()            ->Return File result
-        //HttpNotFoundResult        -> HttpNotFound()    ->Return Not Found result
-        //HttpUnauthorizedResult    -> --------          ->Return Unauthorized result
-        //EmptyResult               -> --------          ->if you don't want return any result.
+        public ActionResult DeleteWithQueryString(int departmentId) // third parameter of url in RouteConfig.cs is "id". 
+        {                                                          // So you can not send your parameter, like third parameter of url. 
+            return Content("Coming Id: " + departmentId);         // http://localhost:50176/department/DeleteWithQueryString?departmentId=5
+        }                                                        // Send your parameter with queryString.
+
+        public ActionResult Update(int departmentId, string name) //This parameters are not using like this one by one, object(Department) will use instead of this parameters.
+        {
+            return Content("Did: " + departmentId + " " + " Name: " + name); //http://localhost:50176/department/Update?departmentId=9&name=Accounting
+        }
     }
 }
