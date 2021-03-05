@@ -1,0 +1,23 @@
+﻿@model PersonnelMVC.ViewModels.DepartmentDetailViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Detail</title>
+</head>
+<body>
+    <h3>Department Detail Page</h3>
+    <h4>Id: @Model.Department.Id - @Model.Department.Name</h4>
+    <ul>
+        @foreach (var personnel in Model.Personnels)
+        {
+            <li>@personnel.Name</li>
+        }
+    </ul>
+</body>
+</html>
