@@ -37,10 +37,7 @@ namespace PersonnelMVCUI.Controllers
                 {
                     return HttpNotFound();
                 }
-                else
-                {
-                    departmentToUpdate.Name = department.Name;
-                }
+                departmentToUpdate.Name = department.Name;
             }
             db.SaveChanges();
             return RedirectToAction("Index", "Department");
@@ -54,6 +51,18 @@ namespace PersonnelMVCUI.Controllers
                 return HttpNotFound();
             }
             return View("DepartmentForm", model);
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var departmentToDelete = db.Department.Find(id);
+            if (departmentToDelete == null)
+            {
+                return HttpNotFound();
+            }
+            db.Department.Remove(departmentToDelete);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
