@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="PersonnelDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="PersonnelDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Department">
           <Key>
             <PropertyRef Name="Id" />
@@ -20,7 +20,6 @@
           <Property Name="DepartmentId" Type="int" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Surname" Type="nvarchar" MaxLength="50" />
-          <Property Name="Age" Type="tinyint" />
           <Property Name="Salary" Type="smallint" />
           <Property Name="BirthDate" Type="smalldatetime" />
           <Property Name="Gender" Type="bit" Nullable="false" />
@@ -46,8 +45,7 @@
             <End Role="Personnel" EntitySet="Personnel" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PersonnelDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -57,8 +55,16 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Personnel" Relationship="Self.FK_Personnel_Department" FromRole="Department" ToRole="Personnel" />
+          <NavigationProperty Name="Personnel" Relationship="PersonnelDbModel.FK_Personnel_Department" FromRole="Department" ToRole="Personnel" />
         </EntityType>
+        <EntityContainer Name="PersonnelDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Department" EntityType="Self.Department" />
+          <EntitySet Name="Personnel" EntityType="PersonnelDbModel.Personnel" />
+          <AssociationSet Name="FK_Personnel_Department" Association="PersonnelDbModel.FK_Personnel_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Personnel" EntitySet="Personnel" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Personnel">
           <Key>
             <PropertyRef Name="Id" />
@@ -67,16 +73,15 @@
           <Property Name="DepartmentId" Type="Int32" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Age" Type="Byte" />
           <Property Name="Salary" Type="Int16" />
           <Property Name="BirthDate" Type="DateTime" Precision="0" />
           <Property Name="Gender" Type="Boolean" Nullable="false" />
           <Property Name="IsMarried" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Department" Relationship="Self.FK_Personnel_Department" FromRole="Personnel" ToRole="Department" />
+          <NavigationProperty Name="Department" Relationship="PersonnelDbModel.FK_Personnel_Department" FromRole="Personnel" ToRole="Department" />
         </EntityType>
         <Association Name="FK_Personnel_Department">
-          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
-          <End Role="Personnel" Type="Self.Personnel" Multiplicity="*" />
+          <End Type="PersonnelDbModel.Department" Role="Department" Multiplicity="0..1" />
+          <End Type="PersonnelDbModel.Personnel" Role="Personnel" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Department">
               <PropertyRef Name="Id" />
@@ -86,14 +91,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="PersonnelDbEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Department" EntityType="Self.Department" />
-          <EntitySet Name="Personnel" EntityType="Self.Personnel" />
-          <AssociationSet Name="FK_Personnel_Department" Association="Self.FK_Personnel_Department">
-            <End Role="Department" EntitySet="Department" />
-            <End Role="Personnel" EntitySet="Personnel" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -111,15 +108,14 @@
           <EntitySetMapping Name="Personnel">
             <EntityTypeMapping TypeName="PersonnelDbModel.Personnel">
               <MappingFragment StoreEntitySet="Personnel">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Surname" ColumnName="Surname" />
-                <ScalarProperty Name="Age" ColumnName="Age" />
-                <ScalarProperty Name="Salary" ColumnName="Salary" />
-                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
-                <ScalarProperty Name="Gender" ColumnName="Gender" />
                 <ScalarProperty Name="IsMarried" ColumnName="IsMarried" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

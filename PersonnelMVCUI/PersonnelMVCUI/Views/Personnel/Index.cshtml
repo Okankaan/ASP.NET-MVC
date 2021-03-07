@@ -1,0 +1,36 @@
+﻿@model List<PersonnelMVCUI.Models.EntityFramework.Personnel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Personnel List</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Department</th>
+            <th>Salary</th>
+            <th>Age</th>
+            <th>Birth Date</th>
+            <th>Gender</th>
+            <th>Married Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var personnel in Model)
+        {
+            <tr>
+                <td>@personnel.Name</td>
+                <td>@personnel.Surname</td>
+                <td>@personnel.DepartmentId</td>
+                <td>@personnel.Salary</td>
+                <td>@(DateTime.Now.Year - personnel.BirthDate.Value.Year)</td>
+                <td>@personnel.BirthDate.Value.ToString("dd-MM-yyyy")</td>
+                <td>@(personnel.Gender == true ? "Male" : "Female")</td>
+                <td>@(personnel.IsMarried == true ? "Married" : "Not Married")</td>
+            </tr>
+        }
+    </tbody>
+</table>

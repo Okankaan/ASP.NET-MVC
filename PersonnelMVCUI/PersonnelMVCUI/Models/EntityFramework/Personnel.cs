@@ -18,7 +18,6 @@ namespace PersonnelMVCUI.Models.EntityFramework
         public Nullable<int> DepartmentId { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
-        public Nullable<byte> Age { get; set; }
         public Nullable<short> Salary { get; set; }
         public Nullable<System.DateTime> BirthDate { get; set; }
         public bool Gender { get; set; }
