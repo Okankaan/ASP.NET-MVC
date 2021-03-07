@@ -16,5 +16,19 @@ namespace PersonnelMVCUI.Controllers
             var model = db.Department.ToList();
             return View(model);
         }
+
+        [HttpGet]
+        public ActionResult New()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult New(Department department)
+        {
+            db.Department.Add(department);
+            db.SaveChanges();
+            return RedirectToAction("Index","Department");
+        }
     }
 }
