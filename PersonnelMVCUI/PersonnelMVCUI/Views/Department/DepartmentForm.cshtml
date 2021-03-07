@@ -12,12 +12,13 @@
         <button type="submit" class="btn btn-success">Add</button>
     </form>*@
 
-@using (Html.BeginForm("New", "Department", FormMethod.Post))
+@using (Html.BeginForm("Save", "Department", FormMethod.Post))
 {
     <div class="form-group">
         @Html.LabelFor(m => m.Name)
         @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
     </div>
-    <button type="submit" class="btn btn-success">Add</button>
+    @Html.HiddenFor(m => m.Id)
+    <button type="submit" class="btn btn-success">Save</button>
 }
 

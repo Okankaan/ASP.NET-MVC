@@ -265,7 +265,7 @@
     <Content Include="Views\Shared\_Navbar.cshtml" />
     <Content Include="Scripts\jquery-3.0.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.0.0.min.map" />
-    <Content Include="Views\Department\New.cshtml" />
+    <Content Include="Views\Department\DepartmentForm.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

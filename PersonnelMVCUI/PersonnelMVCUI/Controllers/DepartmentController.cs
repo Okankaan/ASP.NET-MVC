@@ -20,15 +20,40 @@ namespace PersonnelMVCUI.Controllers
         [HttpGet]
         public ActionResult New()
         {
-            return View();
+            return View("DepartmentForm");
         }
 
         [HttpPost]
-        public ActionResult New(Department department)
+        public ActionResult Save(Department department)
         {
-            db.Department.Add(department);
+            if (department.Id == 0) //For adding
+            {
+                db.Department.Add(department);
+            }
+            else
+            {
+                var departmentToUpdate = db.Department.Find(department.Id);
+                if (departmentToUpdate == null)
+                {
+                    return HttpNotFound();
+                }
+                else
+                {
+                    departmentToUpdate.Name = department.Name;
+                }
+            }
             db.SaveChanges();
-            return RedirectToAction("Index","Department");
+            return RedirectToAction("Index", "Department");
+        }
+
+        public ActionResult Update(int id)
+        {
+            var model = db.Department.Find(id);
+            if (model == null)
+            {
+                return HttpNotFound();
+            }
+            return View("DepartmentForm", model);
         }
     }
 }
