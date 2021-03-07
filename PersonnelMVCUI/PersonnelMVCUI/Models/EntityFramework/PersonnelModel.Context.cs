@@ -18,6 +18,7 @@ namespace PersonnelMVCUI.Models.EntityFramework
         public PersonnelDbEntities()
             : base("name=PersonnelDbEntities")
         {
+            this.Configuration.LazyLoadingEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
