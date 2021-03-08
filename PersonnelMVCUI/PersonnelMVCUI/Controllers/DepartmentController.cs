@@ -23,7 +23,9 @@ namespace PersonnelMVCUI.Controllers
             return View("DepartmentForm", new Department());
         }
 
-        [HttpPost]
+        //[HttpPost]
+        //For using Cross Side Request Forgery(CSRF) Attacks
+        [ValidateAntiForgeryToken]//running with added cookie "@Html.AntiForgeryToken()" in DepartmentForm.cshtml
         public ActionResult Save(Department department)
         {
             if (!ModelState.IsValid)

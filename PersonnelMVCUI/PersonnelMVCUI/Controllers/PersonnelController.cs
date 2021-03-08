@@ -29,6 +29,7 @@ namespace PersonnelMVCUI.Controllers
             return View("PersonnelForm", model);
         }
 
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Personnel personnel)
         {
             if (!ModelState.IsValid)

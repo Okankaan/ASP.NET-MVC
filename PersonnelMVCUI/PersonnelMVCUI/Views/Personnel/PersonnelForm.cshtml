@@ -8,6 +8,7 @@
 @*@Html.ValidationSummary()   //This line for,line by line listing error messages in up of the form *@
 @using (Html.BeginForm("Save", "Personnel", FormMethod.Post))
 {
+    @Html.AntiForgeryToken()
     <div class="form-group">
         @Html.LabelFor(m => m.Personnel.Name)
         @Html.TextBoxFor(m => m.Personnel.Name, new { @class = "form-control" })
