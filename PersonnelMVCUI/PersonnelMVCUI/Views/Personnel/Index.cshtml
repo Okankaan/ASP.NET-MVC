@@ -3,7 +3,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@Html.ActionLink("New Personnel", "New", null, new { @class = "btn btn-success" })
 <h2>Personnel List</h2>
 <table class="table table-bordered">
     <thead>
@@ -16,6 +16,8 @@
             <th>Birth Date</th>
             <th>Gender</th>
             <th>Married Status</th>
+            <th>Update</th>
+            <th>Delete</th>
         </tr>
     </thead>
     <tbody>
@@ -30,6 +32,8 @@
                 <td>@personnel.BirthDate.Value.ToString("dd-MM-yyyy")</td>
                 <td>@(personnel.Gender == true ? "Male" : "Female")</td>
                 <td>@(personnel.IsMarried == true ? "Married" : "Not Married")</td>
+                <td>@Html.ActionLink("Update", "Update", new { id = personnel.Id }, new { @class = "btn btn-success" })</td>
+                <td>@Html.ActionLink("Delete", "Delete", new { id = personnel.Id }, new { @class = "btn btn-danger" })</td>
             </tr>
         }
     </tbody>

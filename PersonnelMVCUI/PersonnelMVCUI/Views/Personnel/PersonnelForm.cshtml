@@ -1,0 +1,45 @@
+﻿@model PersonnelMVCUI.ViewModels.PersonnelFormViewModel
+@{
+    ViewBag.Title = "PersonnelForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Personnel Form</h2>
+@using (Html.BeginForm("Save", "Personnel", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Personnel.Name)
+        @Html.TextBoxFor(m => m.Personnel.Name, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Personnel.Surname)
+        @Html.TextBoxFor(m => m.Personnel.Surname, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Personnel.DepartmentId) Select Department
+        @Html.DropDownListFor(m => m.Personnel.DepartmentId, new SelectList(Model.Departments, "Id", "Name"), "Select Department", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Personnel.Salary)
+        @Html.TextBoxFor(m => m.Personnel.Salary, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Personnel.BirthDate)
+        @Html.TextBoxFor(m => m.Personnel.BirthDate, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+    </div>
+    <div class="radio">
+        <label>
+            @Html.RadioButtonFor(m => m.Personnel.Gender, true) Male
+        </label>
+        <label>
+            @Html.RadioButtonFor(m => m.Personnel.Gender, false) Female
+        </label>
+    </div>
+    <div class="checkbox">
+        <label>
+            @Html.CheckBoxFor(m => m.Personnel.IsMarried) Married
+        </label>
+    </div>
+    @Html.HiddenFor(m=>m.Personnel.Id)
+    <button type="submit" class="btn btn-default">Save</button>
+}
