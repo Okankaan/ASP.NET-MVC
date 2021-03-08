@@ -31,7 +31,7 @@
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Personnel.BirthDate)
-        @Html.TextBoxFor(m => m.Personnel.BirthDate, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+        @Html.TextBoxFor(m => m.Personnel.BirthDate, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date", onchange= "CheckDateTypeIsValid(this)" })
         @Html.ValidationMessageFor(m => m.Personnel.BirthDate)
     </div>
     <div class="radio">
