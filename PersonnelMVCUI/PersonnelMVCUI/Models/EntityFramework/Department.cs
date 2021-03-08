@@ -23,6 +23,7 @@ namespace PersonnelMVCUI.Models.EntityFramework
 
         public int Id { get; set; }
         [Display(Name = "Department Name")] //For UI showing
+        [Required(ErrorMessage = "The Department Name field is required...")]
         public string Name { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

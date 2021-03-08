@@ -17,6 +17,7 @@
     <div class="form-group">
         @Html.LabelFor(m => m.Name)
         @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Name)
     </div>
     @Html.HiddenFor(m => m.Id)
     <button type="submit" class="btn btn-success">Save</button>

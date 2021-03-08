@@ -23,13 +23,23 @@ namespace PersonnelMVCUI.Controllers
         {
             var model = new PersonnelFormViewModel()
             {
-                Departments = db.Department.ToList()
+                Departments = db.Department.ToList(),
+                Personnel=new Personnel()
             };
             return View("PersonnelForm", model);
         }
 
         public ActionResult Save(Personnel personnel)
         {
+            if (!ModelState.IsValid)
+            {
+                var model = new PersonnelFormViewModel()
+                {
+                    Departments = db.Department.ToList(),
+                    Personnel = personnel
+                };
+                return View("PersonnelForm", model);
+            }
             if (personnel.Id == 0)//Add
             {
                 db.Personnel.Add(personnel);
