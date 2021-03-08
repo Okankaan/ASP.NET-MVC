@@ -11,7 +11,8 @@ namespace PersonnelMVCUI.Models.EntityFramework
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Department
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,10 +20,11 @@ namespace PersonnelMVCUI.Models.EntityFramework
         {
             this.Personnel = new HashSet<Personnel>();
         }
-    
+
         public int Id { get; set; }
+        [Display(Name = "Department Name")] //For UI showing
         public string Name { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Personnel> Personnel { get; set; }
     }

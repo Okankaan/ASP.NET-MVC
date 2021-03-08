@@ -16,7 +16,7 @@
         @Html.TextBoxFor(m => m.Personnel.Surname, new { @class = "form-control" })
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Personnel.DepartmentId) Select Department
+        @Html.LabelFor(m => m.Personnel.DepartmentId)
         @Html.DropDownListFor(m => m.Personnel.DepartmentId, new SelectList(Model.Departments, "Id", "Name"), "Select Department", new { @class = "form-control" })
     </div>
     <div class="form-group">
@@ -40,6 +40,6 @@
             @Html.CheckBoxFor(m => m.Personnel.IsMarried) Married
         </label>
     </div>
-    @Html.HiddenFor(m=>m.Personnel.Id)
+    @Html.HiddenFor(m => m.Personnel.Id)
     <button type="submit" class="btn btn-default">Save</button>
 }

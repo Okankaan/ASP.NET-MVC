@@ -11,18 +11,23 @@ namespace PersonnelMVCUI.Models.EntityFramework
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Personnel
     {
         public int Id { get; set; }
+        [Display(Name = "Department Name")]//For UI showing
         public Nullable<int> DepartmentId { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
+        [Display(Name = "Salary")]
         public Nullable<short> Salary { get; set; }
+        [Display(Name = "Birth Date")]
         public Nullable<System.DateTime> BirthDate { get; set; }
         public bool Gender { get; set; }
+        [Display(Name = "Marriage Status")]
         public bool IsMarried { get; set; }
-    
+
         public virtual Department Department { get; set; }
     }
 }
