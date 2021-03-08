@@ -10,7 +10,7 @@ namespace PersonnelMVCUI.Controllers
     public class DepartmentController : Controller
     {
         PersonnelDbEntities db = new PersonnelDbEntities();
-        // GET: Department
+        
         public ActionResult Index()
         {
             var model = db.Department.ToList();

@@ -2,12 +2,12 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="#">Personnel Management System</a>
+            Welcome @HttpContext.Current.User.Identity.Name
         </div>
         <ul class="nav navbar-nav">
             <li class="active"><a href="/Department">Departments</a></li>
             <li><a href="/Personnel">Personnels</a></li>
-            <li><a href="#">Sign in</a></li>
-            <li><a href="#">Sign up</a></li>
+            <li><a href="/Security/Logout">Logout</a></li>
         </ul>
     </div>
 </nav>
