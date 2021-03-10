@@ -13,6 +13,7 @@ namespace PersonnelMVCUI.Controllers
     {
         PersonnelDbEntities db = new PersonnelDbEntities();
 
+        //[HandleError]// at function level. <customErrors mode="On"></customErrors> in web.config.
         public ActionResult Index()
         {
             var model = db.Department.ToList();

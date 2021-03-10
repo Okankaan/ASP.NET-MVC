@@ -17,6 +17,7 @@ namespace PersonnelMVCUI
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            GlobalFilters.Filters.Add(new HandleErrorAttribute());//Handle error at application level
         }
     }
 }
