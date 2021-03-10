@@ -82,5 +82,11 @@ namespace PersonnelMVCUI.Controllers
             var model = db.Personnel.Where(x => x.DepartmentId == id).ToList();
             return PartialView(model);
         }
+
+        public ActionResult TotalSalary()
+        {
+            ViewBag.Salary = db.Personnel.Sum(x => x.Salary);
+            return PartialView();
+        }
     }
 }

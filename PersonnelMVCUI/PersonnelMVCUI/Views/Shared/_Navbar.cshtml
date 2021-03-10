@@ -1,7 +1,10 @@
 ﻿<nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">Personnel Management System</a>
+            <a class="navbar-brand" href="#">
+                Personnel Management System Total Salary of All Personnels:
+                @{Html.RenderAction("TotalSalary", "Personnel");}
+            </a>
             Welcome @HttpContext.Current.User.Identity.Name
         </div>
         <ul class="nav navbar-nav">
