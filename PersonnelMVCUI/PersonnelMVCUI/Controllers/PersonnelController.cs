@@ -77,5 +77,10 @@ namespace PersonnelMVCUI.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public ActionResult ListPersonnels(int id)
+        {
+            var model = db.Personnel.Where(x => x.DepartmentId == id).ToList();
+            return PartialView(model);
+        }
     }
 }

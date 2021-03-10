@@ -13,18 +13,23 @@
             <th>Name</th>
             <th>Update</th>
             <th>Delete</th>
+            <th>Personnels</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var department in Model)
         {
             <tr>
-                <th>@department.Id</th>
-                <th>@department.Name</th>
-                <th><a class="btn btn-primary" href="/Department/Update/@department.Id">Update</a></th>
-                <th><a class="btn btn-warning btnDeleteDepartment" data-id="@department.Id">Delete</a></th>
+                <td>@department.Id</td>
+                <td>@department.Name</td>
+                <td><a class="btn btn-primary" href="/Department/Update/@department.Id">Update</a></td>
+                <td><a class="btn btn-warning btnDeleteDepartment" data-id="@department.Id">Delete</a></td>
+                @*<td>@Html.ActionLink("Show Personnels","ListPersonnels","Personnel",new { id=department.Id},new {@class="btn btn-primary"})</td>*@
+                <td>@Ajax.ActionLink("Show Personnels", "ListPersonnels", "Personnel", new { id = department.Id }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId="listOfPersonnel" }, new { @class = "btn btn-primary" })</td>
             </tr>
         }
 
     </tbody>
 </table>
+
+<div id="listOfPersonnel"></div>

@@ -1,0 +1,24 @@
+﻿@model IEnumerable<PersonnelMVCUI.Models.EntityFramework.Personnel>
+
+<h1>List of Personnels</h1>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Birth Date</th>
+            <th>Salary</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var personnel in Model)
+        {
+            <tr>
+                <td>@personnel.Name</td>
+                <td>@personnel.Surname</td>
+                <td>@personnel.BirthDate.Value.ToShortDateString()</td>
+                <td>@personnel.Salary TL</td>
+            </tr>
+        }
+    </tbody>
+</table>
