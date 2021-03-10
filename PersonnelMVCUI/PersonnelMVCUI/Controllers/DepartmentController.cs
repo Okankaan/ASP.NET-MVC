@@ -12,10 +12,12 @@ namespace PersonnelMVCUI.Controllers
     public class DepartmentController : Controller
     {
         PersonnelDbEntities db = new PersonnelDbEntities();
-
+        //For Logging using ELMAH->http://localhost:52826/elmah.axd to log page.
         //[HandleError]// at function level. <customErrors mode="On"></customErrors> in web.config.
         public ActionResult Index()
         {
+            int a = 10, b = 0;
+            int c = a / b;
             var model = db.Department.ToList();
             return View(model);
         }
