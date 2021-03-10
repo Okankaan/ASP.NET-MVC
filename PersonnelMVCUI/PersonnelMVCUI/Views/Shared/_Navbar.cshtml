@@ -7,6 +7,10 @@
         <ul class="nav navbar-nav">
             <li class="active"><a href="/Department">Departments</a></li>
             <li><a href="/Personnel">Personnels</a></li>
+            @if (User.IsInRole("A"))
+            {
+                <li><a href="/User">Users</a></li>
+            }
             <li><a href="/Security/Logout">Logout</a></li>
         </ul>
     </div>

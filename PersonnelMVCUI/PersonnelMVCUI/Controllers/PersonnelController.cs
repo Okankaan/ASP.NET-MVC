@@ -9,22 +9,25 @@ using System.Web.Mvc;
 
 namespace PersonnelMVCUI.Controllers
 {
+    [Authorize(Roles = "A,U")] //Roles A and U users can run this controller methods.
     public class PersonnelController : Controller
     {
         PersonnelDbEntities db = new PersonnelDbEntities();
         // GET: Personnel
+
         public ActionResult Index()
         {
             var model = db.Personnel.Include(x => x.Department).ToList();//Lazy loading closed and Eager Loading using. In Eager Loading, Tables will join like this.
             return View(model);                                        //With Eager Loading(Joining), just one query goes to database.
         }
 
+        [Authorize(Roles = "A")]//Just roles A users can run this method.
         public ActionResult New()
         {
             var model = new PersonnelFormViewModel()
             {
                 Departments = db.Department.ToList(),
-                Personnel=new Personnel()
+                Personnel = new Personnel()
             };
             return View("PersonnelForm", model);
         }

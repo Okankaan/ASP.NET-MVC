@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace PersonnelMVCUI.Controllers
 {
+    [Authorize(Roles = "A,U")]//Roles A and U users can run this controller methods.
     public class DepartmentController : Controller
     {
         PersonnelDbEntities db = new PersonnelDbEntities();
