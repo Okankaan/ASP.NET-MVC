@@ -15,6 +15,7 @@ namespace PersonnelMVCUI.Controllers
         PersonnelDbEntities db = new PersonnelDbEntities();
         // GET: Personnel
 
+        [OutputCache(Duration = 30)]//OutputCache answer your request, if less than 30 second pass. If 30 seconds do not pass after the page that ran the last Index method was triggered, the Index method will not be triggered again.
         public ActionResult Index()
         {
             var model = db.Personnel.Include(x => x.Department).ToList();//Lazy loading closed and Eager Loading using. In Eager Loading, Tables will join like this.
