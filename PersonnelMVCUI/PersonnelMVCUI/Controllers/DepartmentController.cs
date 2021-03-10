@@ -1,4 +1,5 @@
 ﻿using PersonnelMVCUI.Models.EntityFramework;
+using PersonnelMVCUI.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace PersonnelMVCUI.Controllers
     public class DepartmentController : Controller
     {
         PersonnelDbEntities db = new PersonnelDbEntities();
-        
+
         public ActionResult Index()
         {
             var model = db.Department.ToList();
@@ -33,9 +34,11 @@ namespace PersonnelMVCUI.Controllers
             {
                 return View("DepartmentForm");
             }
+            MessageViewModel model = new MessageViewModel();
             if (department.Id == 0) //For adding
             {
                 db.Department.Add(department);
+                model.Message = department.Name + " successfully added...";
             }
             else
             {
@@ -45,9 +48,14 @@ namespace PersonnelMVCUI.Controllers
                     return HttpNotFound();
                 }
                 departmentToUpdate.Name = department.Name;
+                model.Message = department.Name + " successfully updated...";
             }
             db.SaveChanges();
-            return RedirectToAction("Index", "Department");
+
+            model.Status = true;
+            model.LinkText = "List of Departments";
+            model.Url = "/Department";
+            return View("_Message", model);
         }
 
         public ActionResult Update(int id)

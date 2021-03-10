@@ -4,7 +4,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@using (Html.BeginForm("Save", "Department", FormMethod.Post))
+<div id="message">
+
+</div>
+@using (Ajax.BeginForm("Save", "Department", new AjaxOptions { HttpMethod="POST", UpdateTargetId="message"}))//Show to div with id "message", returning result from Save actionResult of Department controller
 {
     @Html.AntiForgeryToken() // Cookie created in UI > Console > Application
     <div class="form-group">

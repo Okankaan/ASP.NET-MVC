@@ -505,6 +505,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\PersonnelRoleProvider.cs" />
+    <Compile Include="ViewModels\MessageViewModel.cs" />
     <Compile Include="ViewModels\PersonnelFormViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -533,6 +534,7 @@
     <Content Include="Views\Security\Login.cshtml" />
     <Content Include="Views\Personnel\ListPersonnels.cshtml" />
     <Content Include="Views\Personnel\TotalSalary.cshtml" />
+    <Content Include="Views\Shared\_Message.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
